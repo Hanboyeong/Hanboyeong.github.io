@@ -176,7 +176,53 @@
         .pic { width:calc(50vw - 20px); }
     }
     </style>
-    <script>
+   <script>
+
+    $(document).ready(function(){
+
+       $(".gnb-top").click(function(){
+
+           $(".brand-list_gnb").addClass("on");
+
+           $(".top_close").fadeIn();
+
+       }); 
+
+       $(".top_close").click(function(){
+
+           $(".brand-list_gnb").removeClass("on");
+
+           $(".top_close").fadeOut();
+
+       });    
+
+        var sl_wd = parseInt($(".sl_box li").width());
+
+        var len = $(".sl_box li").length;
+
+        $(".thum_btn_box li.left").click(function(){
+
+            $(".sl_box li").eq(len-1).prependTo($(".sl_box"));
+
+            $(".sl_box").css("margin-left",-sl_wd+"px");
+
+            $(".sl_box").not(":animated").animate({"margin-left":"0px"}, 600);
+
+        });   
+
+        $(".thum_btn_box li.right").click(function(){
+
+            $(".sl_box").not(":animated").animate({"margin-left":-sl_wd+"px"}, 600, function(){
+
+                $(".sl_box li").eq(0).appendTo($(".sl_box"));
+
+                $(".sl_box").css("margin-left","0px");                
+
+            });
+
+        });   
+
+    });    
 
     </script>
 </head>
